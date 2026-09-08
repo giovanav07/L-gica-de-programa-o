@@ -1,0 +1,80 @@
+programa
+{
+	inclua biblioteca Util --> U
+    funcao inicio()
+    {
+     inteiro opcao=0,id,quantidade
+     cadeia equipamento[3] = {"Notebooks", "Monitores", "Teclados"}
+     inteiro estoque[3][2] = {
+                               {5, 10},
+                               {15, 10},
+                               {20, 15}
+                                         }
+     enquanto(opcao!=3)
+     {
+     escreva("======Almoxarifado=========\n")
+     U.aguarde(1000)
+     escreva("1.Emitir Relatório de Ativos\n")
+     U.aguarde(1000)
+     escreva("2.Registrar Recebimento de Equipamento\n")
+     U.aguarde(1000)
+     escreva("3.Encerrar Sistema\n")
+     U.aguarde(1000)
+     escreva("Escolha a sua opção:\n")
+     U.aguarde(1000)
+     leia(opcao)
+     escolha(opcao)
+     {
+     caso 1:
+     escreva("RELATÓRIO ATIVO\n")
+     para (inteiro i=0; i<3;i++)
+     {
+     U.aguarde(1000)
+     escreva("ID:",i,"\n") 
+     U.aguarde(1000)
+     escreva("Equipamento:",equipamento[i],"\n")
+     U.aguarde(1000)
+     escreva("Quantidade minima:",estoque[i][0],"\n")
+     U.aguarde(1000)
+     escreva("Quantidade atual:",estoque[i][1],"\n")
+     U.aguarde(1000)
+     se (estoque[i][0]>estoque[i][1])
+     {
+     escreva( "Estoque crítico! Necessário abrir chamado de compra.\n")
+     }
+     }
+     pare
+     
+     caso 2:
+     escreva("RECEBIMENTO DE EQUIPAMENTO\n")
+     U.aguarde(1000)
+     escreva("Digite o ID do equipamento(0 a 2):\n")
+     leia(id)
+     se(id>=0 e id<3)
+     {
+     escreva ("Digite a quantidade recebida:\n")
+     leia(quantidade)
+     estoque[id][1]= estoque[id][1]+quantidade
+     escreva("Recebimento registrado!\n")
+     U.aguarde(1000)
+     escreva("Equipamento:",equipamento[id],"\n")
+     U.aguarde(1000)
+     escreva("Nova quantidade em estoque ",estoque[id][1],"\n")
+     }
+     senao
+     {
+     escreva("ID não existente!\n")	
+     }
+     pare
+     
+     caso 3:
+     escreva("Sistema encerrado!\n")
+     pare
+     
+     caso contrario:
+     escreva("Só existe as opções 1,2 e 3. Digite de novo! \n")
+     
+     }
+    }
+   }
+}
